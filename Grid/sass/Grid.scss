@@ -1,0 +1,125 @@
+@mixin CreateGrid($NoCols ,$ScreenName, $Width)
+{
+  @media screen and (min-width:$Width*1px)
+  {
+    @if($ScreenName == ""){
+      .hidden{
+        display: none !important;
+      }
+      .show{
+        display: block !important;
+      }
+      @for $i from 1 through 12{
+        .col-#{$i}
+        {
+          width: 100/($NoCols/$i) * 1%;
+        }
+        .offset-#{$i}{
+           margin-left: 100/($NoCols/$i)*1%;
+         }
+      }
+    }
+    @else{
+      .hidden-#{$ScreenName}{
+        display: none !important;
+      }
+      .show-#{$ScreenName}{
+        display: block !important;
+
+      }
+      @for $i from 1 through 12 {
+        .col-#{$ScreenName}-#{$i}{
+          width: 100/($NoCols/$i) * 1%;
+        }
+        .offset-#{$ScreenName}-#{$i}{
+          margin-left: 100/($NoCols/$i) * 1%;
+        }
+      }
+
+    }
+  }
+}
+@include CreateGrid (12,"",0);
+@include CreateGrid(12,sm,576);
+@include CreateGrid(12,md,768);
+@include CreateGrid(12,lg,1200);
+@include CreateGrid(12,"xl",1400);
+
+$Utilities : (1,2,3,4,5,6,7,8,9,10 , auto);
+@each Utility in $Utilities {
+  @if($Utility == auto){
+
+    .m-#{$Utility}{
+      margin: ${Utility};
+    }
+    .mx-#{$Utility}{
+      margin-left: ${Utility};
+      margin-right: ${Utility};
+    }
+    .my-#{$Utility}{
+      margin-top: ${Utility};
+      margin-bottom: ${Utility};
+    }
+    .ml-#{$Utility}{
+      margin-left: ${Utility};
+    }
+    .mr-#{$Utility}{
+      margin-right: ${Utility};
+    }
+    .mt-#{$Utility}{
+      margin-top: ${Utility};
+    }
+    .mb-#{$Utility}{
+      margin-bottom: ${Utility};
+    }
+  }
+ @else{
+  .m-#{$Utility}{
+    margin: ${Utility}px;
+  }
+   .mx-#{$Utility}{
+    margin-left: ${Utility}px;
+    margin-right: ${Utility}px;
+  }
+  .my-#{$Utility}{
+    margin-top: ${Utility}px;
+    margin-bottom: ${Utility}px;
+  }
+  .ml-#{$Utility}{
+    margin-left: ${Utility}px;
+  }
+   .mr-#{$Utility}{
+    margin-right: ${Utility}px;
+  }
+   .mt-#{$Utility}{
+    margin-top: ${Utility}px;
+  }
+   .mb-#{$Utility}{
+    margin-bottom: ${Utility}px;
+  }
+
+  .p-#{$Utility}{
+    padding: ${Utility}px;
+  }
+   .px-#{$Utility}{
+    padding-left: ${Utility}px;
+    padding-right: ${Utility}px;
+  }
+  .py-#{$Utility}{
+    padding-top: ${Utility}px;
+    padding-bottom: ${Utility}px;
+  }
+  .pl-#{$Utility}{
+    padding-left: ${Utility}px;
+  }
+   .pr-#{$Utility}{
+    padding-right: ${Utility}px;
+  }
+   .pt-#{$Utility}{
+    padding-top: ${Utility}px;
+  }
+   .pb-#{$Utility}{
+    padding-bottom: ${Utility}px;
+  }
+ }
+}

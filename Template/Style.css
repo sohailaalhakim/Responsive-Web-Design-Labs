@@ -1,0 +1,21 @@
+/* body{
+    width: 100%;
+} */
+.boot , .heading{
+    background-color: rgb(237, 234, 234);
+    border-radius: 10px;
+}
+.lorem{
+    background-color: rgb(249, 232, 235);
+
+}
+img{
+    width:200px;
+    height: 300px;
+    border-radius: 20%;
+    background-color: white;
+}
+.btn-group{
+    margin-left: 25px
+}
+
